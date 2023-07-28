@@ -1,9 +1,7 @@
 let xhr = new XMLHttpRequest;
 let xhrAnswer = new XMLHttpRequest;
 let xhrResponseSession = new XMLHttpRequest;
-// let xhrres = new XMLHttpRequest;
 let local = "http://127.0.0.1:8000";
-// export const myVariable = session_id;
 
 window.addEventListener('DOMContentLoaded', function () {
 
@@ -37,10 +35,6 @@ window.addEventListener('DOMContentLoaded', function () {
             ques = response
             let content = response.question_text
             let opt = response.options
-            // console.log(opt)
-
-            // console.log(divques);
-            // console.log(ques);
             if (ques.question_type === "text") {
                 let inputext = document.createElement('input')
                 let para = document.createElement('p')
@@ -53,7 +47,6 @@ window.addEventListener('DOMContentLoaded', function () {
                 inputext.setAttribute("type", "text");
                 inputext.setAttribute("maxlength", "255");
                 inputext.setAttribute("cols", "30");
-                // inputext.setAttribute("style", "height: 60px;");
                 inputext.setAttribute("rows", "10");
                 inputext.setAttribute("class", "text");
                 inputext.setAttribute("data-questionId", idques);
@@ -94,7 +87,6 @@ window.addEventListener('DOMContentLoaded', function () {
                 let inpunumber = document.createElement('input')
                 para2.setAttribute("class" , "contente")
                 para.setAttribute("class","numquestion")
-                // divques.setAttribute("class","texti")
                 inpunumber.setAttribute("type", "number", "min", "1", "max", "5")
                 inpunumber.setAttribute("name", "response_value");
                 inpunumber.setAttribute("data-questionId", idques);
@@ -115,7 +107,6 @@ window.addEventListener('DOMContentLoaded', function () {
                 divques.append(para)
                 divques.append(para2)
                 divques.append(inpunumber)
-                // console.log(quesnum)
             }
             if (ques.question_type === "radio") {
                 let para = document.createElement('p')
@@ -131,7 +122,6 @@ window.addEventListener('DOMContentLoaded', function () {
                     checkbox.setAttribute("type", "radio");
                 para.setAttribute("class","numquestion")
                 para2.setAttribute("class" , "contente")
-                    // checkbox.setAttribute("name", "response_value");
                     checkbox.setAttribute("class", "response_value");
                     checkbox.setAttribute("id", "labeoption");
                     checkbox.setAttribute("data-questionId", idques);
@@ -140,92 +130,90 @@ window.addEventListener('DOMContentLoaded', function () {
                     checkbox.value = `${opt[i]}`;
                     checkbox.name = `option${idques}`;
                     divques.append(checkbox);
-                    // checkbox.append(label)
-                    // divques.appendChild(document.createTextNode(`${opt[i]}`));
                     divques.appendChild(label);
                     divques.appendChild(document.createElement('br'));
                 }
-                // console.log(opt.length);
                 let quesbox = response
                 optionboxs = response.options
-                // console.log(optionboxs)
             }
         });
 
         getbtn.addEventListener('click', function (e) {
             e.preventDefault();
-
+        
+            // Vérifier si le formulaire est valide
+            let isFormValid = true;
+        
             // Collecte des réponses
             let answers = [];
-
+        
             // Récupérer les réponses des questions textuelles
             let textResponses = document.querySelectorAll('.questions input[type="text"]');
             textResponses.forEach(function (response) {
                 let questionId = response.getAttribute('data-questionId');
-                // console.log(questionId);
                 let answer = response.value.trim();
-
+        
                 // Vérifier si la réponse est vide
                 if (answer !== '') {
                     answers.push({
                         question_id: questionId,
                         response_value: answer
                     });
+                } else {
+                    // Marquer le formulaire comme invalide si un champ est vide
+                    isFormValid = false;
                 }
             });
-
+        
             // Récupérer les réponses des questions numériques
             let numberResponses = document.querySelectorAll('.questions input[type="number"]');
             numberResponses.forEach(function (response) {
                 let questionId = response.getAttribute('data-questionId');
                 let answer = response.value.trim();
-
+        
                 // Vérifier si la réponse est vide
                 if (answer !== '') {
                     answers.push({
                         question_id: questionId,
                         response_value: answer
                     });
+                } else {
+                    // Marquer le formulaire comme invalide si un champ est vide
+                    isFormValid = false;
                 }
             });
-
+        
             // Récupérer les réponses des questions à choix multiple
             let checkboxResponses = document.querySelectorAll('.questions input[type="radio"]:checked');
-            console.log(checkboxResponses);
             checkboxResponses.forEach(function (response) {
                 let questionId = response.getAttribute('data-questionId');
-                // console.log(questionId);
-                    let answer = response.value;
-
-                console.log(answer)
-
+                let answer = response.value;
+        
                 // Vérifier si la réponse est vide
                 if (answer !== '') {
                     answers.push({
                         question_id: questionId,
                         response_value: answer
                     });
+                } else {
+                    // Marquer le formulaire comme invalide si un champ est vide
+                    isFormValid = false;
                 }
             });
-            // Envoyer les réponses au serveur
-            xhrAnswer.open('POST', `${local}/api/questions/responses`);
-            xhrAnswer.setRequestHeader('Content-Type', 'application/json');
-            xhrAnswer.send(JSON.stringify(answers));
-
-
-            // console.log(answers)
-            xhrAnswer.onload = function () {
-
-
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        let response = JSON.parse(xhrAnswer.response);
+        
+            // Si le formulaire est valide, envoyer les réponses au serveur
+            if (isFormValid) {
+                xhrAnswer.open('POST', `${local}/api/questions/responses`);
+                xhrAnswer.setRequestHeader('Content-Type', 'application/json');
+                xhrAnswer.send(JSON.stringify(answers));
+        
+                xhrAnswer.onload = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            let response = JSON.parse(xhrAnswer.response);
                          session_id = response.session_id.session_id;
                          
-                        // window.localStorage.setItem('session_id', `${response.session_id.session_id}`);
-                        // session = localStorage.getItem('tokenName');
                         console.log(response); // Traitez la réponse du serveur comme souhaité
-                        // window.location.href = '/HTML/reponseUser.html';// Récupérez l'URL de destination
                         var url = "/reponseUser.html?session_id=" + session_id;
 
                         // Créez le contenu de la modal avec le message et le lien
@@ -238,35 +226,32 @@ window.addEventListener('DOMContentLoaded', function () {
     </div>  
 `;
 
-                        // Ajoutez la modal au DOM
                         var modalElement = $('<div class="modal fade" tabindex="-1" role="dialog"></div>');
                         modalElement.html(modalContent);
                         $('body').append(modalElement);
 
 
-                        // Affichez la modal
-                        // modalElement.modal('show');
+                        
                         let lienUser = document.getElementById("lienuser")
                         console.log(lienUser);
-                      
-                    } else {
-                        console.error('Erreur lors de la requête :', xhr.status);
+                        } else {
+                            console.error('Erreur lors de la requête :', xhr.status);
+                        }
                     }
-                }
-
-
-       
-            };
+                };
+            } else {
+                // Afficher un message d'erreur indiquant que le formulaire est invalide
+                alert('Le formulaire est incomplet. Veuillez remplir tous les champs avant de soumettre.');
+            }
         });
+        
 
 
     }
 
 
-   // Get the video player element
    const videoElement = document.getElementById('video');
 
-   // Function to loop the video
    function loopVideo() {
      if (videoElement.currentTime >= videoElement.duration) {
        videoElement.currentTime = 0;
@@ -274,7 +259,6 @@ window.addEventListener('DOMContentLoaded', function () {
      requestAnimationFrame(loopVideo);
    }
  
-   // Start looping the video when it's loaded
    videoElement.addEventListener('loadeddata', () => {
      loopVideo();
    });

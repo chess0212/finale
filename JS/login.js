@@ -25,8 +25,6 @@ window.addEventListener('DOMContentLoaded', function () {
       window.localStorage.setItem('iduser' ,`${responselogin.id}`);
 
       console.log(responselogin);
-      // Effectuez les actions appropriées après la connexion réussie
-      // par exemple, redirigez l'utilisateur vers une autre page
       window.location.href = 'admin.html';
     } else {
       // Gérez les erreurs de connexion ici

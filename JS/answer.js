@@ -3,7 +3,7 @@ let localres = "http://127.0.0.1:8000";
 
 
 // Redirection vers la page admin après une connexion réussie
-const loginForm = document.getElementById('connexion'); // Assurez-vous d'ajuster l'ID du formulaire de connexion
+const loginForm = document.getElementById('connexion');
 if (loginForm) {
   loginForm.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -52,7 +52,6 @@ xhrres.onload=function () {
     responseSondages.forEach(element => {
         responseValue = element.response_value
         idquestion = element.question_id
-    // console.log(element);
 
         
         if (idquestion===6 && responseValue === "Oculus Quest" ) {
@@ -120,7 +119,6 @@ xhrres.onload=function () {
         if (idquestion=== 15) {
           qualiteAudio =  responseValue
         }
-        // console.log(element.responseValue);
 
     });
     

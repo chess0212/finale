@@ -1,9 +1,7 @@
 window.addEventListener('DOMContentLoaded',function () {
-    // auth.js
 
 // Fonction pour vérifier si l'utilisateur est authentifié
 function checkAuth() {
-    //  localStorage.setItem('tokenName' , null); // Vérifiez l'état de connexion dans le stockage local
     const isLoggedIn = localStorage.getItem('tokenName'); // Vérifiez l'état de connexion dans le stockage local
     const currentPage = window.location.pathname;
   
@@ -22,7 +20,6 @@ function checkAuth() {
     }
   }
   
-  // Appeler la fonction de vérification d'authentification sur toutes les pages où vous souhaitez protéger l'accès
   checkAuth();
   
 })

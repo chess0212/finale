@@ -20,7 +20,6 @@ window.addEventListener('DOMContentLoaded',function () {
     let reponseType ;
     let question
 
-    //  session = localStorage.getItem('session_id');
     const currentURL = window.location.search;
     const urlParams = new URLSearchParams(currentURL);
     const sessionId = urlParams.get('session_id');
@@ -32,7 +31,8 @@ console.log(sessionId);
     xhrResponseSession.send()
     xhrResponseSession.onload = function() {
         responseSessions = JSON.parse(xhrResponseSession.response);
-    
+        responseSessions.sort((a, b) => a.question_id - b.question_id);
+
         responseSessions.forEach(responseSession => {
             ponseUser = responseSession.response_value;
             responseId = responseSession.question_id;

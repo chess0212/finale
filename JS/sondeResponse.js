@@ -45,10 +45,12 @@ function displayTables(tablesData) {
   const tableContainer = document.getElementById('table-container');
   tableContainer.innerHTML = ''; // Vider le conteneur avant d'afficher les nouvelles tables
 
+  const sessionIds = Object.keys(tablesData);
+  sessionIds.sort((a, b) => a - b); // Tri des sessions par ordre croissant des identifiants
+
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-  const sessionIds = Object.keys(tablesData);
   for (let i = startIndex; i < endIndex && i < sessionIds.length; i++) {
     const session_id = sessionIds[i];
     const table = createTable(session_id, tablesData[session_id]);
@@ -59,6 +61,7 @@ function displayTables(tablesData) {
 
   createPaginationButtons(Math.ceil(sessionIds.length / itemsPerPage));
 }
+
 
 // Reste du code inchangé...
 
@@ -100,20 +103,21 @@ function createTable(session_id, responses) {
   const table = document.createElement('table');
   const headerRow = document.createElement('tr');
 
-
-
   table.appendChild(headerRow);
 
   const thQuestionText = document.createElement('th');
   thQuestionText.textContent = 'Question Text';
   const thResponseValue = document.createElement('th');
-  thResponseValue.textContent = 'Response Value';
+  thResponseValue.textContent = 'Reponses ';
   const thQuestionId = document.createElement('th');
   thQuestionId.textContent = 'Question ';
 
   headerRow.appendChild(thQuestionText);
   headerRow.appendChild(thResponseValue);
   headerRow.appendChild(thQuestionId);
+
+  // Tri des réponses par l'identifiant de la question (question_id)
+  responses.sort((a, b) => a.question_id - b.question_id);
 
   responses.forEach(response => {
     const row = document.createElement('tr');
@@ -135,3 +139,4 @@ function createTable(session_id, responses) {
 
   return table;
 }
+

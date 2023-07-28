@@ -1,11 +1,8 @@
 let xhrResponseSession = new XMLHttpRequest;
 let localsession = "http://127.0.0.1:8000";
 
-// import { myVariable } from './index.js';
-// console.log(myVariable)
 let xhr = new XMLHttpRequest;
 let xhrAnswer = new XMLHttpRequest;
-// let xhrres = new XMLHttpRequest;
 let local = "http://127.0.0.1:8000";
 window.addEventListener('DOMContentLoaded',function () {
     
@@ -21,7 +18,6 @@ window.addEventListener('DOMContentLoaded',function () {
     let responseId ;
     let reponseType ;
 
-    //  session = localStorage.getItem('session_id');
     const currentURL = window.location.search;
     const urlParams = new URLSearchParams(currentURL);
     const sessionId = urlParams.get('session_id');
@@ -70,9 +66,6 @@ console.log(sessionId);
                     para.setAttribute("class","numquestion")
                 para2.setAttribute("class" , "contente")
                     para2.innerHTML=`${content}`
-                    // inputext.setAttribute( "maxlength","255" )
-                    // inputext.setAttribute(  "cols","30", )
-                    // inputext.setAttribute(   "style","height: 60px;" )
                     inputext.setAttribute("name","response_value");
                     inputext.setAttribute("type","text");
                     inputext.setAttribute("maxlength","255" );
@@ -89,9 +82,7 @@ console.log(sessionId);
                        let questext = response
                        let quescontent = response.quescontent
        
-                       // console.log(questext)
                       inputext.value = responseSessions.find(responseSession=>responseSession.question_id === idques ).response_value
-                    //   console.log(responseSessions.find(responseSession=>responseSession.question_id === idques ).response_value)
                    }
                    if (ques.question_type === "number") {
                        let quesnum = response
@@ -111,11 +102,9 @@ console.log(sessionId);
                        if (questionResponse) {
                            inpunumber.value = questionResponse.response_value;
                        }
-                    //    inpunumber.setAttribute("class","response_value"); 
                        divques.append(para)
                        divques.append(para2)
                        divques.append(inpunumber)
-                       // console.log(quesnum)
                        inpunumber.value = responseSessions.find(responseSession=>responseSession.question_id === idques ).response_value
 
                    } 

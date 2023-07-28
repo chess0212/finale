@@ -4,8 +4,6 @@ let localQuestion = "http://127.0.0.1:8000"
 window.addEventListener('DOMContentLoaded',function () {
     let idques
     let table = document.getElementById('table');
-    // let tdContente = document.getElementById('tdContente');
-    // let tdType = document.getElementById('tdType');
     xhrQuestion.open('GET', `${localQuestion}/api/questions`);
     xhrQuestion.send();
     xhrQuestion.onload=function () {
@@ -22,8 +20,6 @@ window.addEventListener('DOMContentLoaded',function () {
         let type = responseQue.question_type
         console.log(type)
 
-        // console.log(trTable);
-        // console.log(ques);
         if (responseQue.question_type === "text" || responseQue.question_type === "number") {
             let tdId = document.createElement('td')
             let tdContente = document.createElement('td')
