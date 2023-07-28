@@ -1,0 +1,98 @@
+/* Styles de base */
+body {
+  background-color: #f2f2f2;
+  margin: 0;
+}
+
+/* Styles pour le menu */
+.container {
+  padding: 20px;
+}
+
+.containermenue {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  height: 100%;
+  position: relative;
+  right: 200px;
+}
+
+.logouser {
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 18px;
+}
+
+/* Styles pour le bouton de déconnexion */
+#deco {
+  display: block;
+  margin-top: 20px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.col-md-8 {
+  max-height: 700px;
+  overflow-y: auto;
+
+}
+/* Styles pour le conteneur des graphiques */
+.table-cont {
+  width: 100%;
+  max-width: 700px; /* Réduit la largeur maximale du tableau pour les petits écrans */
+  height: 100%;
+  border-collapse: collapse;
+  margin: 20px auto; /* Centrer horizontalement */
+  position: relative;
+}
+
+/* Styles pour les cellules du tableau */
+table td {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+table tr:first-child {
+  font-weight: bold;
+  background-color: #f2f2f2;
+}
+
+/* Ajoutez les media queries pour rendre la mise en page plus réactive */
+@media screen and (max-width: 500px) {
+  .containermenue {
+    width: 100%;
+    max-width: 400px; /* Réduit la largeur maximale du menu pour les petits écrans */
+    margin: 0 auto; /* Centre horizontalement */
+  }
+
+  .logouser {
+    left: 0; /* Réinitialise la position relative */
+    margin-bottom: 20px; /* Ajoute un espace sous le logo pour les petits écrans */
+  }
+
+  .table-cont {
+    max-width: 100%; /* Le tableau prend toute la largeur de l'écran pour les petits écrans */
+    top: 0; /* Réinitialise la position relative */
+  }
+}

@@ -1,0 +1,93 @@
+body.imagedefond {
+    background-image: url("chemin/vers/votre/image.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .logo {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+  }
+  
+  .ccontainer {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .connexion {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .paragraph {
+    margin-bottom: 20px;
+  }
+  
+  form#Question {
+    position: relative;
+  }
+  
+  iframe {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 20px;
+  }
+  
+  #btn {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  
+  .modal-dialog {
+    width: 400px;
+    margin: 100px auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal-content {
+    padding: 20px;
+  }
+  
+  /* Animation pour afficher la modal */
+  .modal.fade.show {
+    display: block;
+  }
+  
+  .modal.fade .modal-dialog {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .modal.fade.show .modal-dialog {
+    transform: translateY(0);
+  }
+  

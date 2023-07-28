@@ -1,0 +1,84 @@
+hbody {
+  background-color: #f2f2f2;
+  margin: 0;
+}
+
+/* Styles pour le menu */
+.container {
+  padding: 20px;
+}
+
+.containermenue {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  height: 100%;
+  position: relative;
+  right: 200px;
+}
+
+.logouser {
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 18px;
+}
+
+/* Styles pour le bouton de déconnexion */
+#deco {
+  display: block;
+  margin-top: 20px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+#deco {
+  display: block;
+  margin-top: 20px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.chart {
+  width: 100% ;
+  height: calc(100% - 200px);
+  border-collapse: collapse;
+  overflow-y: auto;
+  position: relative;
+  max-height: 900px;
+  left: 50px;
+  display: block;
+}
+
+table td {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+table tr:first-child {
+  font-weight: bold;
+  background-color: #f2f2f2;
+}
+/* .table-container{
+  position: relative;
+  top: -150px;
+} */

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/CSS/admin.css">
+    
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="containermenu">
+                    <img class="logouser" src="https://www.bigscreenvr.com/images/logos/bigscreen.svg">
+                    <ul>
+                        <li><a href="admin.html">Accueil</a></li>
+                        <li><a href="questionnaire.html">Questionnaire</a></li>
+                        <li><a href="reponse.html">Réponse</a></li>
+                    </ul>
+                    <a href="#" id="deco">Déconnexion</a>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="chart">
+                    <div class="chart1">
+                        <span>Graphique des Marques</span>
+                        <canvas id="myChart"></canvas>
+                        <span class="span">Graphique des stores</span>
+                        <canvas id="myChart2"></canvas>
+                    </div>
+                    <div class="chart1">
+                        <span>Graphique des utilisations</span>
+                        <canvas id="myChart3"></canvas>
+                        <span class="span">Graphique des performances</span>
+                        <canvas id="marksChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/JS/answer.js"></script>
+    <script src="/JS/deco.js"></script>
+    <script src="/JS/protege.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+</body>
+</html>
